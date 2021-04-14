@@ -99,6 +99,7 @@
   </div>
 </template>
 <script>
+import { apiPublic } from "../services/apiService.js";
 export default {
   data: () => ({
     form: {
@@ -152,7 +153,7 @@ export default {
         },
       };
     },
-    onSubmit() {
+    async onSubmit() {
       try {
         this.errorReset();
         if (this.form.passwordConfirmation !== this.form.password) {
@@ -161,8 +162,27 @@ export default {
           this.error.password.message = "As senhas devem ser iguais.";
           return;
         }
+
+        await apiPublic.post("/users", {
+          name: this.form.name,
+          email: this.form.email,
+          password: this.form.password,
+        });
+        this.$router.push("login");
       } catch (error) {
-        //
+        console.error(error.response.data);
+        this.error.message = "Não foi possível cadastrar!";
+        if (!error.response || !error.response.data) return;
+
+        if (error.response.data.message)
+          this.error.message = error.response.data.message;
+
+        if (error.response.data.error) {
+          error.response.data.error.forEach((err) => {
+            this.error[err.field].state = false;
+            this.error[err.field].message = err.message;
+          });
+        }
       }
     },
   },
