@@ -2,8 +2,8 @@
   <div id="app">
     <main>
       <NavMain />
+      <router-view />
     </main>
-    <router-view />
     <FooterMain />
   </div>
 </template>

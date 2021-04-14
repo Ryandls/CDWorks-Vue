@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          Project with the aim of learning Vue.
+          Project with objective of learning Vue.
         </div>
       </div>
     </div>
