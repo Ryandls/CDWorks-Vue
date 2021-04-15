@@ -13,7 +13,7 @@ const vuexPersist = new VuexPersist({
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  plugin: [vuexPersist.plugin],
+  plugins: [vuexPersist.plugin],
 
   state: state,
 

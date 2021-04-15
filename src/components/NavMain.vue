@@ -17,13 +17,13 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item @click="$router.push('/register')"
+          <b-nav-item @click="$router.push('/register')" v-if="!isAuthenticated"
             >Cadastrar-se</b-nav-item
           >
           <b-nav-item @click="$router.push('/login')">Entrar</b-nav-item>
-          <b-nav-item-dropdown right>
+          <b-nav-item-dropdown right v-if="isAuthenticated">
             <template v-slot:button-content>
-              <em>NOME_USUARIO</em>
+              <em>{{ username }}</em>
             </template>
             <b-dropdown-item @click="$router.push('/profile/1')"
               >Perfil</b-dropdown-item
@@ -39,10 +39,18 @@
 export default {
   methods: {
     logout() {
-      console.log("Saiu da aplicação...");
+      this.$store.dispatch("logout");
+      this.$router.push("/");
+    },
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.authenticated;
+    },
+    username() {
+      return this.$store.state.user.name;
     },
   },
 };
 </script>
-<style>
-</style>
+<style></style>
