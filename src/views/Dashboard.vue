@@ -56,19 +56,11 @@
               <b-button variant="primary">Mais detalhes...</b-button>
             </template>
           </JobCard>
-
-          <div class="actions text-center">
-            <b-button variant="primary" class="mr-2" @click="previus()"
-              >Anterior</b-button
-            >
-            <b-button variant="primary" @click="next()">Proximo</b-button>
-            <p class="text-muted">
-              <small>
-                Do projeto PRIMEIRO_REGISTRO até ÚLTIMO_REGISTRO - Total de
-                TOTAL_REGISTROS projetos.</small
-              >
-            </p>
-          </div>
+          <Pagination
+            :pagination="pagination"
+            @onPreviousClick="search"
+            @onNextClick="search"
+          ></Pagination>
         </div>
 
         <div v-else>
@@ -81,11 +73,15 @@
 <script>
 import { apiProtected } from "../services/apiService";
 import JobCard from "../components/JobCard";
+import Pagination from "../components/Pagination";
+
 export default {
   components: {
     JobCard,
+    Pagination,
   },
   data() {
+    Pagination;
     return {
       jobs: null,
       filters: {
