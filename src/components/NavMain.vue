@@ -20,7 +20,9 @@
           <b-nav-item @click="$router.push('/register')" v-if="!isAuthenticated"
             >Cadastrar-se</b-nav-item
           >
-          <b-nav-item @click="$router.push('/login')">Entrar</b-nav-item>
+          <b-nav-item @click="$router.push('/login')" v-if="!isAuthenticated"
+            >Entrar</b-nav-item
+          >
           <b-nav-item-dropdown right v-if="isAuthenticated">
             <template v-slot:button-content>
               <em>{{ username }}</em>

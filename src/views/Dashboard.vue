@@ -16,28 +16,26 @@
                   id="input-title"
                   v-model="filters.title"
                   type="text"
-                  placeholder="Buscar por Título"
+                  placeholder="Buscar pelo título"
+                ></b-form-input>
+              </div>
+              <div class="col-12 my-3">
+                <b-form-checkbox
+                  id="checkbox-my-jobs"
+                  v-model="filters.myJobs"
+                  name="myJobs"
+                  :value="true"
+                  :unchecked-value="false"
+                  >Meus Projetos</b-form-checkbox
                 >
-                </b-form-input>
-                <div class="col-12 my-3">
-                  <b-form-checkbox
-                    id="cheack-my-jobs"
-                    v-model="filters.myJobs"
-                    name="myJobs"
-                    value="true"
-                    unchecked-value="false"
-                  >
-                    Meus Projetos
-                  </b-form-checkbox>
-                </div>
-                <div class="col-12">
-                  <b-button type="submit" variant="primary" size="lg" block
-                    >Buscar</b-button
-                  >
-                  <b-button type="reset" variant="danger" size="sm" block
-                    >Limpar</b-button
-                  >
-                </div>
+              </div>
+              <div class="col-12">
+                <b-button type="submit" variant="primary" size="lg" block
+                  >Buscar</b-button
+                >
+                <b-button type="reset" variant="danger" size="sm" block
+                  >Limpar</b-button
+                >
               </div>
             </div>
           </b-form>
@@ -48,40 +46,16 @@
           class="float-right"
           @click="() => $router.push('./jobs/new')"
           variant="success"
+          >Novo Projeto</b-button
         >
-          Novo Projeto</b-button
-        >
-
         <h3>Projetos</h3>
         <hr />
         <div v-if="jobs && jobs.length > 0">
-          <b-card
-            v-for="job in jobs"
-            :key="job.id"
-            :title="job.title"
-            :sub-title="job.Hirer.name"
-            class="my-2"
-            bg-variant="light"
-          >
-            <b-card-text>{{ job.description }}</b-card-text>
-            <div class="row">
-              <div class="col-6">
-                <strong>Orçamento</strong>
-
-                R${{ job.budget }}
-              </div>
-              <div class="col-6">
-                <strong>Propostas até:</strong>
-
-                {{ job.deadline }}
-              </div>
-            </div>
-            <div class="text-right">
-              <hr />
-
+          <JobCard v-for="job in jobs" :key="job.id" :job="job">
+            <template slot="actions">
               <b-button variant="primary">Mais detalhes...</b-button>
-            </div>
-          </b-card>
+            </template>
+          </JobCard>
 
           <div class="actions text-center">
             <b-button variant="primary" class="mr-2" @click="previus()"
@@ -98,14 +72,19 @@
         </div>
 
         <div v-else>
-          <span class="text-muted"> Nenhum projeto encontrado....</span>
+          <span class="text-muted"> Nenhum projeto encontrado...</span>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { apiProtected } from "../services/apiService";
+import JobCard from "../components/JobCard";
 export default {
+  components: {
+    JobCard,
+  },
   data() {
     return {
       jobs: null,
@@ -120,6 +99,48 @@ export default {
       },
     };
   },
+  methods: {
+    async search() {
+      try {
+        this.jobs = null;
+        const params = {};
+        if (this.filters.title) {
+          params.title = this.filters.title;
+        }
+        if (this.filters.myJobs) {
+          params.userId = this.$store.state.user.id;
+        }
+        params.limit = this.pagination.limit;
+        params.offset = this.pagination.offset;
+        const response = await apiProtected.get("/jobs", {
+          params,
+        });
+        this.jobs = response.data.data;
+        this.pagination = response.data.meta;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    onSubmit() {
+      this.pagination = {
+        offset: 0,
+        limit: 5,
+        count: 0,
+      };
+      this.search();
+    },
+    onReset() {
+      this.filters = {
+        title: "",
+        myJobs: false,
+      };
+    },
+  },
+  mounted() {
+    this.search();
+  },
 };
 </script>
+
 <style></style>
