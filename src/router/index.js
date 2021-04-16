@@ -25,6 +25,31 @@ const routes = [
     name: "dashboard",
     component: () => import("../views/Dashboard"),
   },
+  {
+    path: "/profile/:userId",
+    component: () => import("../views/Profile"),
+    children: [
+      {
+        path: "",
+        component: () => import("../views/parts/ProfileHome"),
+      },
+      {
+        path: "skills",
+
+        component: () => import("../views/parts/ProfileSkills"),
+      },
+      {
+        path: "portfolios",
+
+        component: () => import("../views/parts/ProfilePortfolios"),
+      },
+      {
+        path: "pic",
+
+        component: () => import("../views/parts/ProfilePic"),
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
