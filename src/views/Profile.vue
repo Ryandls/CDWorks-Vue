@@ -1,9 +1,35 @@
 <template>
   <div class="profile">
-    <h1>Perfil</h1>
+    <div class="container-fluid mt-2">
+      <div class="row">
+        <div class="col-12 col-sm-4 col-md-3 mb-3">
+          <ProfileCard :user="user"> </ProfileCard>
+        </div>
+        <div class="col-12 col-sm-8 col-md-9"><router-view /></div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-export default {};
+import { apiProtected } from "../services/apiService";
+import ProfileCard from "../components/ProfileCard";
+
+export default {
+  components: {
+    ProfileCard,
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+  async mounted() {
+    const id = this.$route.params.userId;
+
+    const response = await apiProtected.get(`/users/${id}`);
+
+    this.user = response.data.data;
+  },
+};
 </script>
 <style></style>
