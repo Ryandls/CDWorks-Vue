@@ -23,12 +23,18 @@ export default {
       user: null,
     };
   },
+  methods: {
+    async onUpdateUser() {
+      const id = this.$route.params.userId;
+      const response = await apiProtected.get(`/users/${id}`);
+
+      this.user = response.data.data;
+    },
+  },
   async mounted() {
-    const id = this.$route.params.userId;
+    await this.onUpdateUser();
 
-    const response = await apiProtected.get(`/users/${id}`);
-
-    this.user = response.data.data;
+    this.$on("UpdateUser", this.onUpdateUser);
   },
 };
 </script>
