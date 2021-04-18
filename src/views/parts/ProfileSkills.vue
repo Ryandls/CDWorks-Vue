@@ -56,7 +56,7 @@
               class="mr-2"
               >Editar</b-button
             >
-            <b-button variant="primary" size="sm" @click="remove(skill)"
+            <b-button variant="danger" size="sm" @click="remove(skill)"
               >Remover</b-button
             >
           </div>
@@ -107,7 +107,7 @@ export default {
       });
     },
     async sendUpdate() {
-      await apiProtected.post(
+      await apiProtected.patch(
         `/users/${this.$parent.user.id}/skills/${this.form.id}`,
         {
           skillId: this.form.skill,
@@ -121,6 +121,24 @@ export default {
         skill: null,
         level: null,
       };
+    },
+    edit(skill) {
+      this.form = {
+        id: skill.id,
+        skill: skill.skillId,
+        level: skill.level,
+      };
+    },
+    async remove(skill) {
+      try {
+        await apiProtected.delete(
+          `/users/${this.$parent.user.id}/skills/${skill.id}`
+        );
+        this.refreshUser();
+      } catch (error) {
+        console.error(error);
+        this.errorMessage = "Erro ao excluir skill.";
+      }
     },
   },
   async mounted() {
