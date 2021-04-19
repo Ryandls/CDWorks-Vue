@@ -23,7 +23,7 @@
         <div class="col-12">
           <b-form-group
             id="input-group-description"
-            label="Nível:"
+            label="Objetivo:"
             label-for="text-description"
           >
             <b-form-textarea
