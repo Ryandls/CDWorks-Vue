@@ -50,6 +50,21 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/jobs/:id/show",
+    name: "JobsShow",
+    component: () => import("../views/JobsView.vue"),
+  },
+  {
+    path: "/jobs/new",
+    name: "JobsNew",
+    component: () => import("../views/JobsNew.vue"),
+  },
+  {
+    path: "/jobs/:id/edit",
+    name: "JobsEdit",
+    component: () => import("../views/JobsEdit.vue"),
+  },
 ];
 
 const router = new VueRouter({
