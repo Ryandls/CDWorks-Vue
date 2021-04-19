@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit.stop.prevent="onSubmit()" @reset.prevent="onReset()">
+  <b-form @submit.stop.prevent="onSubmit" @reset.prevent="onReset">
     <div class="row">
       <div class="col-12">
         <b-form-group
@@ -43,6 +43,7 @@
       </div>
       <div class="col-12 text-right">
         <b-button type="reset" variant="danger">Limpar</b-button>&nbsp;
+
         <b-button type="submit" variant="primary">{{
           form.id ? "Alterar" : "Salvar"
         }}</b-button>

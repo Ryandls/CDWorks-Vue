@@ -112,7 +112,8 @@
         </b-form-group>
       </div>
       <div class="col-12 text-right">
-        <b-button type="reset" variant="danger">Limpar</b-button>&nbsp;
+        <b-button @click="remove(data)" variant="danger">Remover</b-button
+        >&nbsp;
         <b-button type="submit" variant="primary">{{
           form.id ? "Alterar" : "Salvar"
         }}</b-button>
@@ -190,6 +191,15 @@ export default {
             deadline: null,
             Skills: [],
           };
+    },
+    async remove(job) {
+      try {
+        await apiProtected.delete(`jobs/${job.id}`);
+        this.$router.push("/dashboard/");
+      } catch (error) {
+        console.error(error);
+        this.errorMessage = "Erro ao excluir os dados.";
+      }
     },
   },
   async mounted() {

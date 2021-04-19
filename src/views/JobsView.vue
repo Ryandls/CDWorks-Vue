@@ -39,11 +39,6 @@
             >
           </template>
         </ApplicationCard>
-        <Pagination
-          :pagination="pagination"
-          @onPreviousClick="loadApplications"
-          @onNextClick="loadApplications"
-        ></Pagination>
       </div>
     </div>
   </div>
@@ -52,13 +47,12 @@
 <script>
 import { apiProtected } from "../services/apiService";
 import JobCard from "../components/JobCard";
-import Pagination from "../components/Pagination";
-import ApplicationCard from "../components/ApplicationCard";
 
+import ApplicationCard from "../components/ApplicationCard";
 export default {
   components: {
     JobCard,
-    Pagination,
+
     ApplicationCard,
   },
   data: () => ({
