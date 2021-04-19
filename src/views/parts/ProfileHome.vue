@@ -7,7 +7,7 @@
       :key="portfolio.id"
       :title="portfolio.title"
       :img-src="portfolioPic(portfolio)"
-      :img-alt="profile.title"
+      :img-alt="portfolio.title"
       img-top
       tag="article"
       class="mb-2"
@@ -16,6 +16,7 @@
     </b-card>
   </div>
 </template>
+
 <script>
 import { apiProtected } from "../../services/apiService";
 export default {
@@ -35,4 +36,5 @@ export default {
   },
 };
 </script>
+
 <style></style>
