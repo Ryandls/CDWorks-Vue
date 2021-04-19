@@ -1,14 +1,14 @@
 <template>
-  <div id="job-edit">
+  <div id="job-new">
     <div class="container mt-2">
       <div class="row">
         <div class="col-12">
-          <h3>Alterar Projeto</h3>
+          <h3>Nova Proposta</h3>
           <hr />
           <b-alert variant="danger" v-if="errorMessage" show>{{
             errorMessage
           }}</b-alert>
-          <JobForm v-if="job" @submit="onSubmit" :data="job"></JobForm>
+          <AplicationForm @submit="onSubmit"></AplicationForm>
         </div>
       </div>
     </div>
@@ -16,36 +16,26 @@
 </template>
 
 <script>
-import JobForm from "./forms/JobForm";
+import AplicationForm from "./forms/AplicationForm";
 import { apiProtected } from "../services/apiService";
 export default {
   components: {
-    JobForm,
+    AplicationForm,
   },
   data: () => ({
     errorMessage: "",
-    job: null,
   }),
   methods: {
     async onSubmit(data) {
       try {
-        const response = await apiProtected.patch(
-          "jobs/" + this.$route.params.applicationId,
-          data
-        );
+        const response = await apiProtected.post("applications/", data);
         const application = response.data.data;
-        this.$router.push(`/jobs/${application.job.id}/show`);
+        this.$router.push(`/jobs/${application.jobId}/show`);
       } catch (error) {
         console.error(error);
         this.errorMessage = "Erro ao tentar salvar os dados.";
       }
     },
-  },
-  async mounted() {
-    const response = await apiProtected(
-      `jobs/${this.$route.params.applicationId}`
-    );
-    this.job = response.data.data;
   },
 };
 </script>

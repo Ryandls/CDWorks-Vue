@@ -8,7 +8,11 @@
           <b-alert variant="danger" v-if="errorMessage" show>{{
             errorMessage
           }}</b-alert>
-          <JobForm v-if="job" @submit="onSubmit" :data="job"></JobForm>
+          <AplicationForm
+            v-if="job"
+            @submit="onSubmit"
+            :data="job"
+          ></AplicationForm>
         </div>
       </div>
     </div>
@@ -16,11 +20,11 @@
 </template>
 
 <script>
-import JobForm from "./forms/JobForm";
+import AplicationForm from "./forms/AplicationForm";
 import { apiProtected } from "../services/apiService";
 export default {
   components: {
-    JobForm,
+    AplicationForm,
   },
   data: () => ({
     errorMessage: "",
@@ -30,11 +34,11 @@ export default {
     async onSubmit(data) {
       try {
         const response = await apiProtected.patch(
-          "jobs/" + this.$route.params.applicationId,
+          "jobs/" + this.$route.params.id,
           data
         );
-        const application = response.data.data;
-        this.$router.push(`/jobs/${application.job.id}/show`);
+        const job = response.data.data;
+        this.$router.push(`/jobs/${job.id}/show`);
       } catch (error) {
         console.error(error);
         this.errorMessage = "Erro ao tentar salvar os dados.";
@@ -42,9 +46,7 @@ export default {
     },
   },
   async mounted() {
-    const response = await apiProtected(
-      `jobs/${this.$route.params.applicationId}`
-    );
+    const response = await apiProtected(`jobs/${this.$route.params.id}`);
     this.job = response.data.data;
   },
 };

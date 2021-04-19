@@ -10,7 +10,7 @@
           <b-nav-item @click="$router.push('/dashboard')"
             >Sou Freelancer</b-nav-item
           >
-          <b-nav-item @click="$router.push('/new-job')"
+          <b-nav-item @click="$router.push('/jobs/new')"
             >Busco Freelancer</b-nav-item
           >
         </b-navbar-nav>
@@ -37,6 +37,7 @@
     </b-navbar>
   </div>
 </template>
+
 <script>
 export default {
   methods: {
@@ -58,4 +59,5 @@ export default {
   },
 };
 </script>
+
 <style></style>
