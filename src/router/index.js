@@ -65,6 +65,16 @@ const routes = [
     name: "JobsEdit",
     component: () => import("../views/JobsEdit.vue"),
   },
+  {
+    path: "/jobs/:id/application/new",
+    name: "ApplicationNew",
+    component: () => import("../views/ApplicationNew.vue"),
+  },
+  {
+    path: "/jobs/:id/application/:applicationId/edit",
+    name: "ApplicationEdit",
+    component: () => import("../views/ApplicationEdit.vue"),
+  },
 ];
 
 const router = new VueRouter({

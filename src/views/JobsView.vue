@@ -53,10 +53,13 @@
 import { apiProtected } from "../services/apiService";
 import JobCard from "../components/JobCard";
 import Pagination from "../components/Pagination";
+import ApplicationCard from "../components/ApplicationCard";
+
 export default {
   components: {
     JobCard,
     Pagination,
+    ApplicationCard,
   },
   data: () => ({
     job: null,

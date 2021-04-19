@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit.stop.prevent="onSubmit" @reset.prevent="onReset">
+  <b-form @submit.stop.prevent="onSubmit()" @reset.prevent="onReset()">
     <div class="row">
       <div class="col-12">
         <b-form-group
@@ -41,7 +41,6 @@
           >
         </b-form-group>
       </div>
-
       <div class="col-12 text-right">
         <b-button type="reset" variant="danger">Limpar</b-button>&nbsp;
         <b-button type="submit" variant="primary">{{
@@ -81,6 +80,7 @@ export default {
       this.$v.form.$touch();
       if (this.$v.form.$anyError) return;
       this.$emit("submit", {
+        jobId: this.$route.params.id,
         description: this.form.description,
         budget: this.form.budget,
       });
@@ -95,9 +95,11 @@ export default {
         : {
             description: null,
             budget: null,
-            deadline: null,
           };
     },
+  },
+  mounted() {
+    this.onReset();
   },
 };
 </script>
