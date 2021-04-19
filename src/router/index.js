@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
@@ -24,61 +24,70 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: () => import("../views/Dashboard"),
+    meta: { protected: true },
   },
   {
     path: "/profile/:userId",
     component: () => import("../views/Profile"),
+    meta: { protected: true },
     children: [
       {
         path: "",
         component: () => import("../views/parts/ProfileHome"),
+        meta: { protected: true },
       },
       {
         path: "skills",
-
         component: () => import("../views/parts/ProfileSkills"),
+        meta: { protected: true },
       },
       {
         path: "portfolios",
-
         component: () => import("../views/parts/ProfilePortfolios"),
+        meta: { protected: true },
       },
       {
         path: "pic",
-
         component: () => import("../views/parts/ProfilePic"),
+        meta: { protected: true },
       },
     ],
   },
   {
     path: "/jobs/:id/show",
     name: "JobsShow",
-    component: () => import("../views/JobsView.vue"),
+    component: () => import("../views/JobsView"),
+    meta: { protected: true },
   },
   {
     path: "/jobs/new",
     name: "JobsNew",
-    component: () => import("../views/JobsNew.vue"),
+    component: () => import("../views/JobsNew"),
+    meta: { protected: true },
   },
   {
     path: "/jobs/:id/edit",
     name: "JobsEdit",
-    component: () => import("../views/JobsEdit.vue"),
+    component: () => import("../views/JobsEdit"),
+    meta: { protected: true },
   },
   {
     path: "/jobs/:id/application/new",
     name: "ApplicationNew",
-    component: () => import("../views/ApplicationNew.vue"),
+    component: () => import("../views/ApplicationNew"),
+    meta: { protected: true },
   },
   {
     path: "/jobs/:id/application/:applicationId/edit",
     name: "ApplicationEdit",
-    component: () => import("../views/ApplicationEdit.vue"),
+    component: () => import("../views/ApplicationEdit"),
+    meta: { protected: true },
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
+  base: process.env.BASE_URL,
   routes,
 });
 
