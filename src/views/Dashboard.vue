@@ -60,32 +60,31 @@
               >
             </template>
           </JobCard>
+
           <Pagination
             :pagination="pagination"
             @onPreviousClick="search"
             @onNextClick="search"
           ></Pagination>
         </div>
-
         <div v-else>
-          <span class="text-muted"> Nenhum projeto encontrado...</span>
+          <span class="text-muted">Nenhum projeto encontrado...</span>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import { apiProtected } from "../services/apiService";
 import JobCard from "../components/JobCard";
 import Pagination from "../components/Pagination";
-
 export default {
   components: {
     JobCard,
     Pagination,
   },
   data() {
-    Pagination;
     return {
       jobs: null,
       filters: {
@@ -142,5 +141,4 @@ export default {
   },
 };
 </script>
-
-<style></style>
+<style scoped></style>
