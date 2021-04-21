@@ -41,7 +41,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias/ferramentas:
 - Sequelize
 - Axios
 - HTML
-- CSS
 - JavaScript
 
 ## 🔖 Objetivo
