@@ -63,7 +63,7 @@ CDWorks, uma plataforma para Freelancers.
     #Clone repo from github
     git clone https://github.com/CodDev2018/CDWorksAPI.git
 
-    #Entry in Rocketpay folder
+    #Entry in CDWorksAPI folder
     cd CDWorksAPI
 
     #Install deps
@@ -85,8 +85,8 @@ CDWorks, uma plataforma para Freelancers.
     #Clone repo from github
     git clone https://github.com/Ryandls/CDWorks-Vue.git
 
-    #Entry in Rocketpay folder
-    cd CDWork-Vue
+    #Entry in CDWorks-Vue folder
+    cd CDWorks-Vue
 
     #Install deps
 
