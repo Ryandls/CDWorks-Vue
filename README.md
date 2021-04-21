@@ -2,7 +2,17 @@
 
 <h1 align="center">
 
+Início
 
+<img alt="Início" src="./src/assets/initial.gif" />
+
+Perfil
+
+<img alt="Perfil" src="./src/assets/perfil.gif" />
+
+Projetos
+
+<img alt="Projetos" src="./src/assets/Jobs.gif" />
 
 </h1>
 
@@ -14,7 +24,6 @@
 
 </p>
 
-
 <br>
 
 <p align="center">
@@ -25,7 +34,7 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- VueJS 
+- VueJS
 - BootstrapVue
 - MariaDB
 - Axios
@@ -37,12 +46,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Projeto guiado para obter mais conhecimentos sobre Vue.
 
-
 ## 💻 Projeto
 
 CDWorks, uma plataforma para Freelancers.
 
-##  How to test?
+## How to test?
 
 <div id="how-to-test">
 
@@ -57,7 +65,7 @@ CDWorks, uma plataforma para Freelancers.
     cd CDWorksAPI
 
     #Install deps
-  
+
     yarn install
 
     #Run Dababase
@@ -79,7 +87,7 @@ CDWorks, uma plataforma para Freelancers.
     cd CDWork-Vue
 
     #Install deps
-  
+
     yarn install
 
     #Run the Vue Graphic Interface:
@@ -94,7 +102,7 @@ CDWorks, uma plataforma para Freelancers.
 
 </div>
 <div align="center">
-<h3><strong>Created by Bryan.</strong><h3>
+<h3><strong>Edited by Bryan.</strong><h3>
 
 <img alt="AppVideo" title="V" src="./src/assets/giphy.gif" width="100px" height="50"/>
 </div>
