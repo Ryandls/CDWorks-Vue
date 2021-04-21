@@ -1,7 +1,7 @@
 # CDWorks-Vue
 
-
 <h1 align="center">
+
 
 
 </h1>
@@ -26,20 +26,21 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - VueJS 
+- BootstrapVue
+- MariaDB
+- Axios
 - HTML
 - CSS
 - JavaScript
 
 ## 🔖 Objetivo
 
-Projeto simples criado com o objetivo de praticar os conhecimentos adquiridos pelo framework Vue.
+Projeto guiado para obter mais conhecimentos sobre Vue.
 
 
 ## 💻 Projeto
 
-
-
-
+CDWorks, uma plataforma para Freelancers.
 
 ##  How to test?
 
@@ -47,26 +48,49 @@ Projeto simples criado com o objetivo de praticar os conhecimentos adquiridos pe
 
     --Open terminal--
 
+    #BackEnd
+
     #Clone repo from github
-    git clone 
+    git clone https://github.com/CodDev2018/CDWorksAPI.git
 
     #Entry in Rocketpay folder
-    cd cd todolist
-
-
-    #Run project:
+    cd CDWorksAPI
 
     #Install deps
   
     yarn install
 
+    #Run Dababase
+
+    npx sequelize db:migrate
+
+    npx sequelize db:seed
+
+    #Run BackEnd:
+
+    yarn start
+
+    #FrontEnd
+
+    #Clone repo from github
+    git clone https://github.com/Ryandls/CDWorks-Vue.git
+
+    #Entry in Rocketpay folder
+    cd CDWork-Vue
+
+    #Install deps
+  
+    yarn install
+
+    #Run the Vue Graphic Interface:
+
+    vue ui
+
     #Run the development server:
 
-    yarn serve
+    in Vue Graphic Interface
 
-
-
-
+    Tasks - serve - start task
 
 </div>
 <div align="center">
