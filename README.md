@@ -36,6 +36,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias/ferramentas:
 
 - VueJS
 - BootstrapVue
+- WebStorage
 - MariaDB
 - Sequelize
 - Axios
