@@ -32,11 +32,12 @@ Projetos
 
 ## 🚀 Tecnologias
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+Esse projeto foi desenvolvido com as seguintes tecnologias/ferramentas:
 
 - VueJS
 - BootstrapVue
 - MariaDB
+- Sequelize
 - Axios
 - HTML
 - CSS
